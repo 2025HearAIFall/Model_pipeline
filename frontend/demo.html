@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hand Bridge Live Chat</title>
+  
+  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.min.js"></script>
+  <script defer src="assets/script.js"></script>
+</head>
+<body>
+  
+  <header>
+    <button class="back-btn" onclick="location.href='index.html'">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+    <h1>실시간 수어 채팅방</h1>
+    
+    <div class="room-controls">
+      <input type="text" id="roomIdInput" placeholder="방 번호 (예: 1234)" value="1234">
+      <button id="btn-join" onclick="joinRoom()">입장</button>
+    </div>
+  </header>
+
+  <main class="chat-container">
+    <div class="video-area">
+      <div class="video-wrapper">
+        <video id="camera" autoplay playsinline></video>
+        <div id="video-overlay">
+          <span id="status-badge"><i class="fas fa-video"></i> 대기 중</span>
+        </div>
+        <div class="progress-container">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="chat-box" class="chat-box">
+      <div class="date-divider">오늘</div>
+      <div class="system-msg">방에 입장하여 대화를 시작하세요.</div>
+    </div>
+
+    <div class="controls-area">
+      <button id="btn-sign" class="control-btn sign-btn" disabled>
+        <i class="fas fa-hands"></i> <span>수어 (5초)</span>
+      </button>
+
+      <button id="btn-voice" class="control-btn voice-btn" disabled>
+        <i class="fas fa-microphone"></i> <span>음성 (5초)</span>
+      </button>
+      
+      <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+    </div>
+  </main>
+</body>
+</html>
